@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7898091042461606941
+--- !u!1 &5069920846903699324
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3003396873426974837}
-  - component: {fileID: 51392874271909644}
-  - component: {fileID: 2750810090887750164}
-  - component: {fileID: 1385042379105080660}
-  - component: {fileID: -8086724732585710108}
-  - component: {fileID: 8262763605590289533}
+  - component: {fileID: 637239842181896548}
+  - component: {fileID: 353825278616681681}
+  - component: {fileID: 7715348946132674946}
+  - component: {fileID: 2170409996984488743}
+  - component: {fileID: 3599372862304568256}
+  - component: {fileID: 2822133409271884454}
   m_Layer: 5
-  m_Name: KnightBlack
+  m_Name: Rook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3003396873426974837
+--- !u!224 &637239842181896548
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898091042461606941}
+  m_GameObject: {fileID: 5069920846903699324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,35 +40,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &51392874271909644
+--- !u!222 &353825278616681681
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898091042461606941}
+  m_GameObject: {fileID: 5069920846903699324}
   m_CullTransparentMesh: 1
---- !u!114 &2750810090887750164
+--- !u!114 &7715348946132674946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898091042461606941}
+  m_GameObject: {fileID: 5069920846903699324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.49019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 601797b9bfd713a49b71edcb50b2ec60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d6d33aa10e563e47ac8084d3cd2dbf9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -78,28 +78,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1385042379105080660
+--- !u!114 &2170409996984488743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898091042461606941}
+  m_GameObject: {fileID: 5069920846903699324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64ce6cb4e33558d46adfa00809b5b768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
-  isWhite: 0
-  type: 3
---- !u!223 &-8086724732585710108
+  isWhite: 1
+  type: 1
+--- !u!223 &3599372862304568256
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898091042461606941}
+  m_GameObject: {fileID: 5069920846903699324}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
@@ -114,13 +114,13 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!114 &8262763605590289533
+--- !u!114 &2822133409271884454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7898091042461606941}
+  m_GameObject: {fileID: 5069920846903699324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}

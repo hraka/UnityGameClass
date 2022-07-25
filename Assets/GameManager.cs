@@ -35,35 +35,32 @@ public class GameManager : MonoBehaviour
         }
 
 
+        TextAsset position = Resources.Load<TextAsset>("Position");
+        var lines = position.text.Split('\n');
 
-        var pawnTile = dictionary[new Vector2Int(0, 1)];
-        var piece = Instantiate(Resources.Load<Piece>("PawnWhite"), pawnTile.transform);
-        piece.tile = pawnTile;
+        for (int i = 0; i < lines.Length; i++)
+        {
+            var line0 = lines[i].Split(',');
 
-        pawnTile = dictionary[new Vector2Int(0, 6)];
-        piece = Instantiate(Resources.Load<Piece>("PawnBlack"), pawnTile.transform);
-        piece.tile = pawnTile;
-        pawnTile.myPiece = piece;
+            var pawnTile = dictionary[new Vector2Int(int.Parse(line0[3]), int.Parse(line0[4]))];
+            var piece = Instantiate(Resources.Load<Piece>(line0[0]), pawnTile.transform);
+            piece.tile = pawnTile;
+            pawnTile.myPiece = piece;
 
-        pawnTile = dictionary[new Vector2Int(0, 0)];
-        piece = Instantiate(Resources.Load<Piece>("RookWhite"), pawnTile.transform);
-        piece.tile = pawnTile;
-        pawnTile.myPiece = piece;
+            if(int.Parse(line0[2]) == 0)
+            {
+                Debug.Log("∞À¡§");
+                piece.transform.rotation = Quaternion.Euler(0, 0, 180);
+                piece.isWhite = false;
+                piece.GetComponent<Image>().color = new Color(1, 0, 0);
 
-        pawnTile = dictionary[new Vector2Int(7, 7)];
-        piece = Instantiate(Resources.Load<Piece>("RookBlack"), pawnTile.transform);
-        piece.tile = pawnTile;
-        pawnTile.myPiece = piece;
-
-        pawnTile = dictionary[new Vector2Int(2, 0)];
-        piece = Instantiate(Resources.Load<Piece>("BishopWhite"), pawnTile.transform);
-        piece.tile = pawnTile;
-        pawnTile.myPiece = piece;
-
-        pawnTile = dictionary[new Vector2Int(5, 7)];
-        piece = Instantiate(Resources.Load<Piece>("BishopBlack"), pawnTile.transform);
-        piece.tile = pawnTile;
-        pawnTile.myPiece = piece;
+                    
+            } else
+            {
+                piece.isWhite = true;
+                piece.GetComponent<Image>().color = new Color(1, 1, 1);
+            }
+        }
 
     }
 

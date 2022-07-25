@@ -12,8 +12,37 @@ public class Tile : MonoBehaviour, IDropHandler
     {
         var piece = eventData.pointerDrag.GetComponent<Piece>();
 
+        if (piece.isWhite != GameManager.manager.whiteTurn)
+        {
+            Debug.Log("차례를 지키세요/ 흰색턴: " + GameManager.manager.whiteTurn);
+            return;
+        }
         if (piece.type == Piece.PieceType.Pawn)
         {
+            if (piece.isWhite == true && (location == piece.tile.location + Vector2Int.up + Vector2Int.left ||
+                location == piece.tile.location + Vector2Int.up + Vector2Int.right))
+            {
+                if (myPiece != null)
+                    SetPiece(piece);
+                else
+                    return;
+            }
+            if ((piece.isWhite == false && (location == piece.tile.location + Vector2Int.down + Vector2Int.left ||
+                location == piece.tile.location + Vector2Int.down + Vector2Int.right)))
+            {
+                if (myPiece != null)
+                    SetPiece(piece);
+                else
+                    return;
+            }
+            if (piece.pawnMoved == false)
+            {
+                if (piece.isWhite == true && (location == piece.tile.location + Vector2Int.up + Vector2Int.up))
+                    SetPawnMove(piece);
+
+                else if (piece.isWhite == false && (location == piece.tile.location + Vector2Int.down + Vector2Int.down))
+                    SetPawnMove(piece);
+            }
             if (piece.isWhite == true && (location == piece.tile.location + Vector2Int.up))
                 SetPiece(piece);
             else if (piece.isWhite == false && (location == piece.tile.location + Vector2Int.down))
@@ -27,6 +56,19 @@ public class Tile : MonoBehaviour, IDropHandler
         else if (piece.type == Piece.PieceType.Knight &&
             ((piece.tile.location.x - location.x) * (piece.tile.location.y - location.y) == 2 ||
             (piece.tile.location.x - location.x) * (piece.tile.location.y - location.y) == -2))
+            SetPiece(piece);
+        else if (piece.type == Piece.PieceType.Queen &&
+            ((location.x == piece.tile.location.x || (location.y == piece.tile.location.y)) ||
+            ((piece.tile.location.x - location.x) == (piece.tile.location.y - location.y) ||
+                    location.x - piece.tile.location.x == piece.tile.location.y - location.y)))
+            SetPiece(piece);
+        else if (piece.type == Piece.PieceType.King &&
+            (piece.tile.location.x - location.x) * (piece.tile.location.y - location.y) == 1 ||
+            (piece.tile.location.x - location.x) * (piece.tile.location.y - location.y) == -1 ||
+            location == piece.tile.location + Vector2Int.up ||
+            location == piece.tile.location + Vector2Int.down ||
+            location == piece.tile.location + Vector2Int.left ||
+            location == piece.tile.location + Vector2Int.right)
             SetPiece(piece);
         else
             Debug.Log("잘못된 이동 시도");
@@ -72,15 +114,12 @@ public class Tile : MonoBehaviour, IDropHandler
 
     }
 
+    
 
     void SetPiece(Piece piece)
     {
         //차례를 지키지 않은 경우
-        if (piece.isWhite != GameManager.manager.whiteTurn)
-        {
-            Debug.Log("차례를 지키세요/ 흰색턴: " + GameManager.manager.whiteTurn);
-            return;
-        }
+        
 
         //기물이 있는 경우
         if(myPiece != null)
@@ -105,6 +144,26 @@ public class Tile : MonoBehaviour, IDropHandler
         piece.gameObject.transform.SetParent(this.transform);
         Debug.Log("정상 이동");
         GameManager.manager.whiteTurn = !GameManager.manager.whiteTurn;
+
+        piece.pawnMoved = true;
+    }
+    void SetPawnMove(Piece piece)
+    {
+        if (myPiece != null)
+        {
+            return;
+
+        }
+        myPiece = piece;
+        piece.tile.myPiece = null;
+        piece.tile = this;
+        piece.gameObject.transform.SetParent(this.transform);
+        Debug.Log("정상 이동");
+        GameManager.manager.whiteTurn = !GameManager.manager.whiteTurn;
+
+        piece.pawnMoved = true;
     }
 }
+
+
 

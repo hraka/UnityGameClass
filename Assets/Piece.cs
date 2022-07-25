@@ -9,7 +9,8 @@ public class Piece : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public Tile tile;
     public bool isWhite;
-    public enum PieceType {Pawn, Rook, Bishop, Knight} //반드시 이 중 하나를 선택해야 함
+    public bool pawnMoved;
+    public enum PieceType {Pawn, Rook, Bishop, Knight, Queen, King} //반드시 이 중 하나를 선택해야 함
     public PieceType type;
 
     public void OnDrag(PointerEventData eventData)
